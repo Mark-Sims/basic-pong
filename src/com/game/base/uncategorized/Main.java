@@ -23,7 +23,7 @@ import static org.lwjgl.opengl.GL11.*;
 public class Main {
     
     private static Game game;
-    
+    private static MainMenu menu;
     
     public static void main(String[] args){
         // 1 - Start Display
@@ -46,9 +46,11 @@ public class Main {
 
     
     private static void getInput(){
+        menu.getInput();
         game.getInput();
     }
     private static void initGame(){
+        menu = new MainMenu();
         game = new Game();
     }
     
@@ -61,6 +63,7 @@ public class Main {
         glLoadIdentity();
         
         game.render();
+        menu.render();
         
         Display.update();
         Display.sync(60);
@@ -76,7 +79,6 @@ public class Main {
             update();
             // 5 - Render Updates
             render();
-            
         }   
     }
     

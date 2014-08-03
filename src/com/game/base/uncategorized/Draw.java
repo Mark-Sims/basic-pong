@@ -39,6 +39,26 @@ public class Draw {
         }
         glPopMatrix();
     }
+    
+    public static void rectCenterPt(int x, int y, int width, int height){
+        rect(x, y, width, height, 0);
+    }
+    public static void rectCenterPt(int x, int y, int width, int height, int rotation){
+        glPushMatrix();
+        {
+            glTranslatef(x,y,0);
+            glRotatef(rotation, 0, 0, 1);
+            glBegin(GL_QUADS);
+            {
+                glVertex2f(-width / 2, -height / 2);            //Bottom Left
+                glVertex2f(width / 2, height / 2);       //Top Right
+                glVertex2f(-width / 2, height / 2);   //Top Left
+                glVertex2f(width / 2, -height / 2);        //Bottom Right
+            }
+            glEnd();
+        }
+        glPopMatrix();
+    }
 }
 
 //        glColor3f(.25f, .75f, .5f);
